@@ -6,7 +6,7 @@ tags:
   - red team playbook
 ---
 
-# Kerberoasting
+Kerberoasting targets to attack Windows Active Directory's service accounts.
 
 | Tactic (MITRE ATT&CK) | Technique (MITRE ATT&CK)  | Objective                                          | Permissions Required          | Common Tools              |
 | --------------------- | ------------------------- | -------------------------------------------------- | ----------------------------- | ------------------------- |
@@ -15,8 +15,6 @@ tags:
 ---
 
 ## 1. Principle
-
-Kerberoasting targets to attack Windows Active Directory's service accounts.
 
 Properties of kerberos authentication:
 
