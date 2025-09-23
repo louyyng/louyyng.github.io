@@ -24,7 +24,7 @@ Properties of kerberos authentication:
 4.  **Attack Process:**
     - **Discovery:** Any domain user can query the SPN account in domain
     - **Request:** Attackers can pretend they want to access the specific server and send a TGS request to KDC
-    - **Gain:** KDC would not verify do they authorized to access specific server. KDC will accept it if they are valid user in domain. Then, KDC will send you back the TGS.
+    - **Gain:** KDC would not verify if they are authorized to access the specific server and will accept the request if they are a valid user in the domain. Then, the KDC will send back the TGS, which is encrypted with the password hash of the service account associated with the requested SPN.
     - **Crack:** When the attacker get the TGS, they can export it and use hashcat to brute force.
 
 ---
