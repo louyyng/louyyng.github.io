@@ -74,7 +74,7 @@ Then, switch the profile to minibox:
 kubectl config use-context minibox
 ```
 
-Finally, we can get nodes
+Finally, we can get nodes  
 ```
 kubectl config use-context minibox
 Switched to context "minibox".
@@ -84,4 +84,18 @@ NAME          STATUS   ROLES           AGE   VERSION
 minibox       Ready    control-plane   27m   v1.34.0
 minibox-m02   Ready    <none>          27m   v1.34.0
 minibox-m03   Ready    <none>          27m   v1.34.0
+```
+
+### Enable Kubernetes Dashboard
+We can enable it through:
+```
+minikube addons enable metrics-server
+minikube addons enable dashboard
+```
+
+Then, we can use `minikube addons list` to check it is enabled.
+
+Normally, we can get the url
+```
+minikube dashboard --url
 ```
