@@ -34,3 +34,16 @@ It is for defining cluster name. The default name is minikube
 For example: We want to create a profile call 'minibox' with 3 nodes, and use the driver docker.
 `minikube start --driver=docker -n 3 --container-runtime=containerd --cni=calico -p minibox`
 
+To check the node, we can use
+```
+minikube node list -p minibox
+
+minibox	192.168.49.2
+minibox-m02	192.168.49.3
+minibox-m03	192.168.49.4
+```
+
+To check the default one, we can use
+```
+minikube ip
+```
