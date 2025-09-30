@@ -99,3 +99,90 @@ Normally, we can get the url
 ```
 minikube dashboard --url
 ```
+
+`kubectl proxy` command, kubectl authenticates with the API server on the control plane node and makes services available on the default proxy port 8001.
+When `kubectl proxy` is running, we can use `curl http://localhost:8001/` to check the api endpoints
+```
+{
+ "paths": [
+   "/api",
+   "/api/v1",
+   "/apis",
+   "/apis/apps",
+   ......
+   ......
+   "/logs",
+   "/metrics",
+   "/openapi/v2",
+   "/version"
+ ]
+}
+```
+
+If we are not using `kubectl proxy`, we need to authenticate to the API Server when sending API requests.  
+We can authenticate by providing a Bearer Token when issuing a curl command, or by providing a set of keys and certificates.  
+
+```
+export TOKEN=$(kubectl create token default)
+kubectl create clusterrole api-access-root --verb=get --non-resource-url=/*
+kubectl create clusterrolebinding api-access-root --clusterrole api-access-root --serviceaccount=default:default
+```
+
+The above commands:
+- Create an access token is for the default ServiceAccount, and grant special permission to access the root directory of the API. 
+- The special permission will be set through a Role Based Access Control (RBAC) policy. 
+- The special permission is only needed to access the root directory of the API, but not needed to access /api, /apis, or other subdirectories.  
+
+After that, we can 
+```
+export APISERVER=$(kubectl config view | grep https | cut -f 2- -d ":" | tr -d " ")
+```
+And find the APIServer URL
+```
+echo $APISERVER
+https://127.0.0.1:54126
+https://127.0.0.1:54281
+```
+
+Then, we can test the API is applied token or not:
+```
+curl https://127.0.0.1:54126 --header "Authorization: Bearer $TOKEN" --insecure
+
+{
+  "paths": [
+    "/.well-known/openid-configuration",
+    "/api",
+    "/api/v1",
+    "/apis",
+    "/apis/",
+    "/apis/admissionregistration.k8s.io",
+    "/apis/admissionregistration.k8s.io/v1",
+    "/apis/apiextensions.k8s.io",
+    .......
+  ]
+}
+```
+
+If just query with `curl https://127.0.0.1:54126 --insecure`, we will get Forbidden.  
+
+Then, we can query the API   
+```
+curl https://127.0.0.1:54126/version --header "Authorization: Bearer $TOKEN" --insecure
+{
+  "major": "1",
+  "minor": "34",
+  "emulationMajor": "1",
+  "emulationMinor": "34",
+  "minCompatibilityMajor": "1",
+  "minCompatibilityMinor": "33",
+  "gitVersion": "v1.34.0",
+  "gitCommit": "f28b4c9efbca5c5c0af716d9f2d5702667ee8a45",
+  "gitTreeState": "clean",
+  "buildDate": "2025-08-27T10:09:04Z",
+  "goVersion": "go1.24.6",
+  "compiler": "gc",
+  "platform": "linux/arm64"
+}                                                        
+```
+
+If we don't want to use access token, we can extract the client certificate, client key, and certificate authority data from the .kube/config file.  
