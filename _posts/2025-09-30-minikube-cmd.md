@@ -15,7 +15,8 @@ sudo install minikube-darwin-arm64 /usr/local/bin/minikube
 ### Basic Cluster Lifecycle
 `minikube start`  
 Usage: When we start this, it helps to create a simple node of kuberentes.  
-Normally, if using M chip, we use docker as driver. `minikube start --driver=docker`   
+Normally, if using M chip, we use docker as driver.   
+`minikube start --driver=docker`   
 
 Driver can be virtualbox `minikube start --driver=virtualbox`  
 
@@ -46,4 +47,41 @@ minibox-m03	192.168.49.4
 To check the default one, we can use  
 ```
 minikube ip  
+```
+
+To check the cluster status, we can use  
+```
+minikube -p minibox status
+```
+
+### How to use command `minikube kubectl`  
+If using `minikube kubectl -- get nodes`, we will get the default information.  
+To specific profile, we can use  
+```
+minikube -p minibox kubectl -- get nodes
+```
+
+If we just want to use kubectl, first, we need to check the name  
+```
+kubectl config get-contexts
+CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
+          minibox    minibox    minibox    default
+*         minikube   minikube   minikube   default
+```
+  
+Then, switch the profile to minibox:
+```
+kubectl config use-context minibox
+```
+
+Finally, we can get nodes
+```
+kubectl config use-context minibox
+Switched to context "minibox".
+
+kubectl get nodes
+NAME          STATUS   ROLES           AGE   VERSION
+minibox       Ready    control-plane   27m   v1.34.0
+minibox-m02   Ready    <none>          27m   v1.34.0
+minibox-m03   Ready    <none>          27m   v1.34.0
 ```
