@@ -89,7 +89,7 @@ We can get a new one.
 
 If we want to delete them, we can:
 ```
-kubectl delete -y nginx.yaml
+kubectl delete -f nginx.yaml
 
 or
 
