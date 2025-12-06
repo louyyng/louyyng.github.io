@@ -14,7 +14,6 @@ header:
   teaser: /images/profile.png
 ---
 
-# Home Lab Setup For Practicing AD Attack
 ### Initial
 + Windows Server 2022 x1
 + Windows 10 x1
