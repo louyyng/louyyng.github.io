@@ -8,7 +8,7 @@ tags:
 author_profile: true
 read_time: true
 comments: false
-share: true
+share: false
 related: true
 header:
   teaser: /images/profile.png
