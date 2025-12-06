@@ -49,7 +49,7 @@ header:
 ![9](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/adpractice/9.png)
 
 # Windows 10/11   
-Since I am using local network, I changed DNS to my DC IP and also modify hostable.
+Since I am using local network, I changed DNS to my DC IP and also modify hostable.  
 1) Rename PC and add it to Domain
 ![10](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/adpractice/10.png)
 
@@ -59,23 +59,23 @@ Since I am using local network, I changed DNS to my DC IP and also modify hostab
 3) Add new Groups
 ![12](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/adpractice/12.png)
 
-4) Add few users
-Add:
-2xDomain Admin
-2xNormal User
+4) Add few users  
+Add:  
+2xDomain Admin  
+2xNormal User  
 
-# Register Microsoft Defender
-1) You can register trial of Microsoft defender first. 
-2) Download onboarding package in "System" -> "Setting" -> "Endpoints"
+# Register Microsoft Defender  
+1) You can register trial of Microsoft defender first.   
+2) Download onboarding package in "System" -> "Setting" -> "Endpoints"  
 ![13](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/adpractice/13.png)
-3) After running the bat script, try to download Mimikatz. 
-4) We can find the alert on the dashboard.
+3) After running the bat script, try to download Mimikatz.  
+4) We can find the alert on the dashboard.  
 ![14](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/adpractice/14.png)
 
 # Creating Service Principal Name (SPN)
-If we need to practice Kerberoasting, we need a service account.
-1) Create another user named SQLService/Others.
-2) Run the following command to associate an SPN with that user:
+If we need to practice Kerberoasting, we need a service account.  
+1) Create another user named SQLService/Others.  
+2) Run the following command to associate an SPN with that user:  
 ```
 setspn -a myDomainController/SQLService.adpractice.local:60111 adpractice\SQLService
 ```
