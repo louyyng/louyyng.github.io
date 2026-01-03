@@ -65,8 +65,8 @@ If a type start with P, it is a pointer to that type.
 
 ## Parameters (IN vs OUT)
 
-- [IN]: Data you give to the function. e.g FileName
-- [OUT]: Data the function gives back to you. Usually passed by reference (Pointer).
+- IN: Data you give to the function. e.g FileName
+- OUT: Data the function gives back to you. Usually passed by reference (Pointer).
 
 
 ```
@@ -175,4 +175,5 @@ int main() {
 
 After compiled, we can find the payload.txt in Public folder
 
-![con_winapi_1.png](https://github.com/louyyng/louyyng.github.io/blob/master/files/screenshots/con_winapi_1.png)
+![con winapi 1](https://github.com/louyyng/louyyng.github.io/blob/master/files/screenshots/con_winapi_1.jpg)
+
