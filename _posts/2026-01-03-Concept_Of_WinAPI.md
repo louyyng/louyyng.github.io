@@ -68,6 +68,7 @@ If a type start with P, it is a pointer to that type.
 - [IN]: Data you give to the function. e.g FileName
 - [OUT]: Data the function gives back to you. Usually passed by reference (Pointer).
 
+
 ```
 // Example of OUT parameter
 BOOL GetProcessId(OUT int* pid) {
