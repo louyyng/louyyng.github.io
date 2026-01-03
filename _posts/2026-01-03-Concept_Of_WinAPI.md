@@ -175,5 +175,5 @@ int main() {
 
 After compiled, we can find the payload.txt in Public folder
 
-![con winapi 1](https://github.com/louyyng/louyyng.github.io/blob/master/files/screenshots/con_winapi_1.jpg)
+![con winapi 1](https://raw.githubusercontent.com/louyyng/louyyng.github.io/refs/heads/master/files/screenshots/con_winapi_1.jpg)
 
