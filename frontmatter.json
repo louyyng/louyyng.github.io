@@ -52,7 +52,11 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "posts",
-      "path": "[[workspace]]/_posts"
+      "path": "[[workspace]]/_posts",
+      "media": {
+        "directory": "[[workspace]]/assets/img",  
+        "publicPath": "/assets/img"                 
+      }
     }
   ],
   "frontMatter.git.enabled": true
